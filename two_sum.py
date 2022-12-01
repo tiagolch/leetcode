@@ -29,10 +29,28 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 '''
 
 import pytest
+from typing import List
 
 
-def two_sum(self, nums: List[int], target: int) -> List[int]:
-    pass
+def two_sum(nums, target) -> List[int]:
+    # indices = []
+    # for indice_a, num_a in enumerate(nums):
+    #     for indice_b, num_b in enumerate(nums):
+    #         if indice_a != indice_b:
+    #             # if (num_a + num_b) == target:
+    #             if num_b == (target - num_a):
+    #                 indices = [indice_b, indice_a]
+                
+    # return indices
+
+    index_list = {}
+    for i, n in enumerate(nums):
+        if target - n in index_list:
+            return [index_list[target - n],i]
+        index_list[n] = i
+    else:
+        return []  
+
 
 
 @pytest.mark.parametrize("nums, target, result", [
@@ -47,6 +65,5 @@ def two_sum(self, nums: List[int], target: int) -> List[int]:
     ([-1, -2, -3, -4, -5], -8, [2, 4]),
     ([150, 24, 79, 50, 88, 345, 3], 200, [0, 3])
 ])
-
 def test_two_sum(nums, target, result):
     assert two_sum(nums, target) == result
