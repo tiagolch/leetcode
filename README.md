@@ -1,4 +1,4 @@
-# LeetCode
+# [LeetCode](https://leetcode.com/)
 
 ## Environment
 
