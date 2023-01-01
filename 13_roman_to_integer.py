@@ -69,16 +69,20 @@ class Solution:
     def romanToInt(self, s: str) -> int:
         aux = 0
         total = 0
-        for i in s[::-1]:
+        for i in s[::-1].upper():
             current = self.roman[i]
             total += current if current >= aux else -1 * current
             aux = current
         return total
 
-Solution().romanToInt('XXIII')
+Solution().romanToInt('xlix')
+
+
 @pytest.mark.parametrize('s, result', [
     ("III", 3),
     ("IV", 4),
+    ('xix', 19),
+    ('md', 1500),
 ])
 def test_roman_to_int(s, result):
     assert Solution().romanToInt(s) == result
